@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnTable : Button
     lateinit var btnProtein : Button
     lateinit var edInputNama : EditText
+    lateinit var btnShowList : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         btnTable = findViewById(R.id.btnTable)
 
         btnProtein = findViewById(R.id.btnProtein)
+
+        btnShowList = findViewById(R.id.btnShowList)
 
         edInputNama = findViewById(R.id.ed_input_nama)
         btnMain.setOnClickListener(View.OnClickListener {
