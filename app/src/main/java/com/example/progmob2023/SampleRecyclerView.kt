@@ -2,6 +2,7 @@ package com.example.progmob2023
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progmob2023.adapter.PetaniAdapter
 import com.example.progmob2023.model.Petani
@@ -15,7 +16,7 @@ class SampleRecyclerView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_recycler_view)
 
-        rvLatihan = findViewById(R.id.rvLatihan)
+        var rvSample: RecyclerView = findViewById(R.id.rvLatihan)
 
         lPetani = listOf(
             Petani(
@@ -35,6 +36,10 @@ class SampleRecyclerView : AppCompatActivity() {
         )
 
         petaniAdapter = PetaniAdapter(lPetani)
-        rvLatihan.adapter = petaniAdapter
+
+        rvSample.apply {
+            layoutManager = LinearLayoutManager(this@SampleRecyclerView)
+            adapter = petaniAdapter
+        }
     }
 }

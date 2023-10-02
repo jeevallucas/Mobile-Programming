@@ -2,6 +2,7 @@ package com.example.progmob2023
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progmob2023.adapter.PetaniCVAdapter
 import com.example.progmob2023.model.Petani
@@ -35,6 +36,10 @@ class SampleCardView : AppCompatActivity() {
         )
 
         petaniCVAdapter = PetaniCVAdapter(lPetani)
-        rvCardView.adapter = petaniCVAdapter
+
+        rvCardView.apply {
+            layoutManager = LinearLayoutManager(this@SampleCardView)
+            adapter = petaniCVAdapter
+        }
     }
 }

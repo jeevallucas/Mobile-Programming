@@ -10,9 +10,8 @@ import com.example.progmob2023.model.Petani
 
 class PetaniAdapter(val petani: List<Petani>) : RecyclerView.Adapter<PetaniAdapter.PetaniHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetaniHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_item_dutatani, parent, false)
-        return PetaniHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetaniAdapter.PetaniHolder {
+        return PetaniHolder(LayoutInflater.from(parent.context).inflate(R.layout.rv_item_dutatani, parent, false))
     }
 
     override fun onBindViewHolder(holder: PetaniHolder, position: Int) {
@@ -24,18 +23,24 @@ class PetaniAdapter(val petani: List<Petani>) : RecyclerView.Adapter<PetaniAdapt
     }
 
     class PetaniHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val txtUser: TextView = itemView.findViewById(R.id.txtUser)
-        val txtNama: TextView = itemView.findViewById(R.id.txtNama)
-        val txtJumlahLahan: TextView = itemView.findViewById(R.id.txtJumlahLahan)
-        val txtIdentifikasi: TextView = itemView.findViewById(R.id.txtIdentifikasi)
-        val txtTambahLahan: TextView = itemView.findViewById(R.id.txtTambahLahan)
-
+        lateinit var txtUser: TextView
+        lateinit var txtNama: TextView
+        lateinit var txtJumlahLahan: TextView
+        lateinit var txtIdentifikasi: TextView
+        lateinit var txtTambahLahan: TextView
         fun bindPetani(petani: Petani) {
-            txtUser.text = petani.user
-            txtNama.text = petani.nama
-            txtJumlahLahan.text = petani.jumlahLahan
-            txtIdentifikasi.text = petani.identifikasi
-            txtTambahLahan.text = petani.tambahLahan
+            itemView.apply {
+                txtUser = findViewById(R.id.txtUser)
+                txtNama = findViewById(R.id.txtNamaCV)
+                txtJumlahLahan = findViewById(R.id.txtJumlahLahan)
+                txtIdentifikasi = findViewById(R.id.txtIdentifikasi)
+                txtTambahLahan = findViewById(R.id.txtTambahLahan)
+                txtUser.text = petani.user
+                txtNama.text = petani.nama
+                txtJumlahLahan.text = petani.jumlahLahan
+                txtIdentifikasi.text = petani.identifikasi
+                txtTambahLahan.text = petani.tambahLahan
+            }
         }
     }
 }

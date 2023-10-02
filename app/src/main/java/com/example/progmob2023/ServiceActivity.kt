@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 
-class SampleList : AppCompatActivity() {
+class ServiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample_list)
+        setContentView(R.layout.activity_service)
 
-        var btnShowList : Button = findViewById(R.id.btnShowList)
-        btnShowList.setOnClickListener(View.OnClickListener { View ->
-            var intent = Intent(this@SampleList,SampleListView::class.java)
+        var btnGetAPI : Button = findViewById(R.id.btnGetAPI)
+        btnGetAPI.setOnClickListener(View.OnClickListener { view ->
+            var intent = Intent(this@ServiceActivity, GetAPIActivity::class.java)
             startActivity(intent)
         })
     }
