@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Progmob2023"
         tools:targetApi="31">
         <activity
-            android:name=".ServiceActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,44 +27,20 @@
             android:name=".GetAPIActivity"
             android:exported="true" />
         <activity
-            android:name=".SampleCardView"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".ServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".SampleRecyclerView"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".RecyclerActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".SampleListView"
             android:exported="true" />
         <activity
             android:name=".SampleList"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ProteinTrakerActivity"
             android:exported="true" />
@@ -85,13 +61,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Main Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Main Activity" />
     </application>
 
 </manifest>
