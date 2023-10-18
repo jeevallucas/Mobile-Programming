@@ -15,7 +15,13 @@
         android:theme="@style/Theme.Progmob2023"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".crud.UpdatePetaniActivity"
+            android:exported="true" />
+        <activity
+            android:name=".crud.AddPetaniActivity"
+            android:exported="true" />
+        <activity
+            android:name=".crud.GetPetaniActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +30,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".GetAPIActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ServiceActivity"
             android:exported="false" />
