@@ -1,16 +1,17 @@
+import 'package:progmob2023_flutter/constants.dart';
+import 'package:progmob2023_flutter/details_screen.dart';
+import 'package:progmob2023_flutter/details_user.dart';
+import 'package:progmob2023_flutter/schools.dart';
+import 'package:progmob2023_flutter/model/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:progmob2023_flutter/constants.dart';
-import 'package:progmob2023_flutter/details_screen.dart';
-import 'package:progmob2023_flutter/model/category.dart';
+import 'package:progmob2023_flutter/schools.dart';
+import 'package:sidebarx/sidebarx.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,13 +20,21 @@ class MyApp extends StatelessWidget {
       title: 'Course App',
       theme: ThemeData(),
       home: HomeScreen(),
+      routes: {
+        '/detailsuser': (context) => DetailsUser(),
+        '/schools': (context) => Schools()
+      },
     );
   }
 }
+
 class HomeScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Padding(
         padding: EdgeInsets.only(left: 20, top: 50, right: 20),
         child: Column(
@@ -34,12 +43,37 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SvgPicture.asset("assets/icons/menu.svg"),
-                Image.asset("assets/images/user.png"),
+                InkWell(
+                  onTap: () {
+                    if (_scaffoldKey.currentState != null) {
+                      _scaffoldKey.currentState!.openDrawer();
+                    }
+                  },
+                  child: SvgPicture.asset("assets/icons/menu.svg"),
+                ),
+                InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => DetailsUser(),
+                    //   ),
+                    // );
+                    Navigator.pushNamed(
+                        context, "/detailsuser"); //Pakai route di main.dart
+                    // Navigator.pushReplacement( //untuk end atau kill tampilan dan pindah tampilan terawal ke replacement
+                    //   context,
+                    //   MaterialPageRoute<void>(
+                    //       builder: (BuildContext context) => DetailsUser(),
+                    //   )
+                    // );
+                  },
+                  child: Image.asset("assets/images/user.png"),
+                )
               ],
             ),
             SizedBox(height: 30),
-            Text("Hey Alex,", style: kHeadingextStyle),
+            Text("Hey Jeevallucas Gautama,", style: kHeadingextStyle),
             Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
               margin: EdgeInsets.symmetric(vertical: 30),
@@ -74,9 +108,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 15),
             Expanded(
-              child: StaggeredGridView.countBuilder(
+              child: MasonryGridView.count(
                 padding: EdgeInsets.all(0),
                 crossAxisCount: 2,
                 itemCount: categories.length,
@@ -120,8 +154,78 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
               ),
+            ),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            // const DrawerHeader(
+            //   decoration: BoxDecoration(
+            //     color: Colors.blue,
+            //   ),
+            //   child: Text('Drawer Header'),
+            // ),
+            UserAccountsDrawerHeader(
+                // Pertemuan 10
+                currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child:
+                        // Text("NP", style: TextStyle(fontSize: 36)),
+                        Image.asset("assets/images/user.png",
+                            width: 70, height: 70, fit: BoxFit.cover)),
+                accountName: Text("Jeevallucas Gautama"),
+                accountEmail: Text("jnanamaitriya@gmail.com")),
+            ListTile(
+              title: const Text('Home'),
+              trailing: Icon(Icons.home), //Pertemuan 10
+              // leading: Icon(Icons.home), //Pertemuan 10
+              subtitle: Text("Kembali ke halaman utama"), //Pertemuan 10
+              onTap: () {
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Business'),
+              trailing: Icon(Icons.business), //Pertemuan 10
+              // leading: Icon(Icons.home), //Pertemuan 10
+              subtitle: Text("Tentang bisnis kami"), //Pertemuan 10
+              // selected: _selectedIndex == 1,
+              onTap: () {
+                // Update the state of the app
+                // _onItemTapped(1);
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('School'),
+              trailing: Icon(Icons.school), //Pertemuan 10
+              // leading: Icon(Icons.home), //Pertemuan 10
+              subtitle: Text("Kerjasama kami dengan sekolah"), //Pertemuan 10
+              // selected: _selectedIndex == 2,
+              onTap: () {
+                // Update the state of the app
+                // _onItemTapped(2);
+                // Then close the drawer
+                Navigator.pop(
+                    context); // Berfungsi untuk menutup side menu setelah berpindah
+                Navigator.pushNamed(context, "/schools");
+              },
+            ),
+            Divider(
+              //Pertemuan 10
+              color: Colors.black54,
+              // endIndent: 20, // Garis Berakhir Pada
+              // indent: 20, // Garis Bermula Pada
             ),
           ],
         ),
