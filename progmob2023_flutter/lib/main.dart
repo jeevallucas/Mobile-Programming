@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:progmob2023_flutter/constants.dart';
 import 'package:progmob2023_flutter/details_screen.dart';
 import 'package:progmob2023_flutter/details_user.dart';
@@ -7,7 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob2023_flutter/schools.dart';
+import 'package:progmob2023_flutter/tutor_delete.dart';
+import 'package:progmob2023_flutter/tutor_fetch.dart';
+import 'package:progmob2023_flutter/tutor_send.dart';
+import 'package:progmob2023_flutter/tutor_update.dart';
 import 'package:sidebarx/sidebarx.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
@@ -219,6 +225,66 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(
                     context); // Berfungsi untuk menutup side menu setelah berpindah
                 Navigator.pushNamed(context, "/schools");
+              },
+            ),
+            ListTile(
+              title: const Text('Fetch Data'),
+              trailing: Icon(Icons.school_sharp),
+              subtitle: Text("Tutorial Fetch Data"),
+              // selected: _selectedIndex == 2,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TutorFetch(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Send Data'),
+              trailing: Icon(Icons.school_sharp),
+              subtitle: Text("Tutorial Send Data"),
+              // selected: _selectedIndex == 2,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TutorSend(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Update Data'),
+              trailing: Icon(Icons.school_sharp),
+              subtitle: Text("Tutorial Update Data"),
+              // selected: _selectedIndex == 2,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TutorUpdate(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Delete Data'),
+              trailing: Icon(Icons.school_sharp),
+              subtitle: Text("Tutorial Delete Data"),
+              // selected: _selectedIndex == 2,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TutorDelete(),
+                  ),
+                );
               },
             ),
             Divider(
