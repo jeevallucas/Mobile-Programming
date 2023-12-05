@@ -287,6 +287,15 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
+            ListTile(
+              title: const Text('Map'),
+              trailing: Icon(Icons.map),
+              subtitle: Text("Coba Map"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/map");
+              },
+            ),
             Divider(
               //Pertemuan 10
               color: Colors.black54,
